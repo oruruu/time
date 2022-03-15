@@ -59,3 +59,6 @@ document.querySelector('.btn2').addEventListener('click', () => {
 
 localStorage.setItem('test', 55);
 console.log(localStorage.getItem('test'));
+
+sessionStorage.setItem('test2', 1);
+console.log( sessionStorage.getItem('test2'));
