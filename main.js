@@ -57,4 +57,5 @@ document.querySelector('.btn2').addEventListener('click', () => {
     document.querySelector('.res').innerHTML =('ты отработал ' + hour +' часов ' + min + ' минут');
 })
 
-
+localStorage.setItem('test', 55);
+console.log(localStorage.getItem('test'));
