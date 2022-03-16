@@ -1,64 +1,70 @@
-let final = 0
+let final
+let local
+let saveLocal
 let hour = 0
-let hourMin = 0
+let hourMin = 0 
 let min = 0
-let d = 0
-let hourstest = [ 24, 25, 26, 27];
+let hoursAdd = [ 24, 25, 26, 27];
 document.querySelector('.btn').addEventListener('click', () => {
+    if (local !==0 ) {
+        let localNum = localStorage.getItem('test')
+        saveLocal = Number(localNum) 
+        // console.log(saveLocal)
+    }
     let date = document.querySelector('.inp').value;
     let date2 = document.querySelector('.inp2').value;
+    // получаем время начала работы 
+    let hourS = Number(date.substring(0, 2));
+    let minS =Number(date.substring(3, 5));
+    let generalS = (hourS*60) + minS
+    // получаем время конца работы 
+    let hourF =Number(date2.substring(0, 2));
+    let minF =Number(date2.substring(3, 5));
+    let generalF = (hourF*60) + minF
 
-    // let gg =Number(date.substring(0, 2));
-    let g = Number(date.substring(0, 2));
-    let g2 =Number(date.substring(3, 5));
-    let g3 = (g*60) + g2
+    // если конечное время меньше начального то
+    if (generalF < generalS) {
+        hourF = hoursAdd[hourF];
+        generalF = (hourF*60) + minF
+        // переменная с кол-во отработанных минут
+        final = generalF - generalS + saveLocal
+        local = +localStorage.setItem('test',final);
 
-
-
-    let q =Number(date2.substring(0, 2));
-    let q2 =Number(date2.substring(3, 5));
-    let q3 = (q*60) + q2
-
-    if (q <g) {
-        q=hourstest[q]
-        let q3 = (q*60) + q2
-        let final = q3 - g3
-        d = d+final
-            if (d >= 60) {
-                hour = Math.trunc(d/60);
-                hourMin = hour*60
-                min = d-hourMin
-            }
-            else {
-                min = d
-            }
-    }
-    else {
-    let final = q3 - g3
-    d = d+final
-        if (d >= 60) {
-            hour = Math.trunc(d/60);
+        if (final >= 60) {
+            hour = Math.trunc(final/60);
             hourMin = hour*60
-            min = d-hourMin
+            min = final-hourMin
+            console.log(hour)
+            console.log(min)
         }
         else {
-            min = d
+            min = final
+            console.log(min)
         }
-}
+    }
+    else {
+        final = generalF - generalS + saveLocal
+        local = +localStorage.setItem('test',final);
+        if (final >= 60) {
+            hour = Math.trunc(final/60);
+            hourMin = hour*60
+            min = final-hourMin
+            console.log(hour)
+            console.log(min)
+        }
+        else {
+            min = final
+            console.log(min)
+        }
+    }
     document.querySelector('.res').innerHTML =('ты отработал ' + hour +' часов ' + min + ' минут');
 
 })
+
 document.querySelector('.btn2').addEventListener('click', () => {
+    localStorage.removeItem('test')
     final = 0
     hour = 0
-    hourMin = 0
     min = 0
-    d = 0
     document.querySelector('.res').innerHTML =('ты отработал ' + hour +' часов ' + min + ' минут');
 })
-
-localStorage.setItem('test', 55);
-console.log(localStorage.getItem('test'));
-
-sessionStorage.setItem('test2', 1);
-console.log( sessionStorage.getItem('test2'));
