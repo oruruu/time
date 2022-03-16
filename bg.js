@@ -15,4 +15,3 @@ function randomBackgroundImage() {
 
 // вызываем при загрузке/перезагрузке страницы
 window.onload = randomBackgroundImage;
-localStorage.setItem('test', 55);
