@@ -1,0 +1,57 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+body {
+    padding: 50px;
+    margin: 0;
+    font-weight: 500;
+    font-size: 18px;
+    color: #2d3336;
+    background-color: rgb(252, 252, 252);
+    background-size: cover;
+    object-fit: cover;
+    min-height: 100vh;
+}
+p {
+    margin: 0;
+}
+
+.container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(207, 207, 207, 0.3);
+    text-align: center;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    margin: 0 auto;
+}
+.content-text {
+    margin: 12px;
+}
+.inp2 {
+    margin-bottom: 35px;
+}
+.btn,
+.btn2 {
+    background-color: transparent;
+    border: 2px solid rgb(0, 0, 0);
+    cursor: pointer;
+    margin: 10px 0;
+    transition: all .5s;
+    font-size: 20px;
+}
+.btn:hover,
+.btn2:hover {
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+}
